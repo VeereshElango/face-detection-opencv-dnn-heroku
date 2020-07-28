@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{%block bodyblock %}
+
+        <div class="container">
+            <h3 class="content"> Welcome to <span style="color:#198b90">Face Detection App</span></h3>
+        <br>
+            <p>
+                This application was developed with goal of transform a simple machine learning based face detection
+                model to a scalable production level application with CI & CD functionality.
+                For an uploaded picture, the model will try to detect the face of <a src="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam">A.P.J.Abdul Kalam</a>
+            </p>
+        </div>
+        <br>
+
+        <div class="container">
+            <br>
+            <form action="#" method="post" enctype="multipart/form-data" >
+                <div class="form-row">
+                    <div class="col-md-5">
+                        <label for="upload">Upload to predict</label>
+                         <input type="file" class="form-control-file" id="upload" name="image" required="true"/>
+                    </div>
+                    <div class="col-md-7">
+                        <button type="submit" class="btn btn-primary btn-lg">Detect</button>
+                    </div>
+                    </div>
+            </form>
+    
+        </div>
+
+        {% if fileupload  %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" id="predict">
+                    <img src="{{ url_for('static',filename='uploads/')}}{{ img_name }}" alt="" width="{{ w }}" height="300">
+                </div>
+                <div class="col-md-6" id="predict">
+                    <img src="{{ url_for('static',filename='predict/')}}{{ img_name }}" alt="" width="{{ w }}" height="300">
+                </div>
+            </div>
+        </div>
+
+        <style>
+        #predict{
+            border: solid;
+            color:#002f4d;
+            text-align: center;
+        }
+        </style>
+
+
+    {% endif %}
+
+{% endblock  %}
