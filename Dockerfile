@@ -23,4 +23,4 @@ RUN pip3 install -r requirements_prod.txt
 RUN chown -R www-data:www-data /usr/app/
 RUN find /usr/app/ -type d -exec chmod 2750 {} \+
 RUN find /usr/app/ -type f -exec chmod 640 {} \+
-CMD gunicorn --log-file=out.logs --bind 0.0.0.0:$PORT wsgi
+CMD gunicorn --log-file=out.logs --bind 0.0.0.0:${PORT:-5000} wsgi
